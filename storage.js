@@ -10,7 +10,7 @@ const memoryStore = () => {
     fn(null, store);
   };
 
-  return { get, set };
+  return { get: get, set: set };
 };
 
 const promisify = (fn) => {
@@ -26,10 +26,10 @@ const promisify = (fn) => {
 };
 
 const createStorage = (medium = memoryStore()) => {
-  const get = () => promisify(medium.get).then(data => data || {});
-  const set = data => promisify(medium.set.bind(null, data, {force: 1})).then(() => data);
+  const get = () => promisify(medium.get.bind(medium)).then(data => data || {});
+  const set = data => promisify(medium.set.bind(medium, data, {force: 1})).then(() => data);
 
-  return { get, set };
+  return { get: get, set: set };
 }
 
 module.exports = createStorage;

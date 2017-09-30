@@ -16,11 +16,11 @@
   "dependencies": {
     "express": "4.14.0",
     "request": "2.81.0",
+    "webtask-tools": "^3.2.0",
     "xml2js": "0.4.8"
   },
   "devDependencies": {
     "edge": "^7.10.1",
-    "webtask-bundle": "^3.0.1",
-    "webtask-tools": "^3.2.0"
+    "webtask-bundle": "^3.0.1"
   }
 }

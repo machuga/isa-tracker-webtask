@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
   fetcher(erieFeed, storage).then((data) => {
     res.status(200).json(data);
   }).catch((err) => {
-    console.log("Something went wrong", err);
+    console.log("Something went wrong", err.stack);
     res.sendStatus(500);
   });
 });
