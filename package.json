@@ -1,0 +1,26 @@
+{
+  "name": "iss-tracker",
+  "version": "1.0.0",
+  "description": "API to track the ISS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "wt-bundle --output ./build/webtask.js ./webtask.js"
+  },
+  "keywords": [
+    "iss"
+  ],
+  "author": "Matthew Machuga",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.14.0",
+    "request": "2.81.0",
+    "xml2js": "0.4.8"
+  },
+  "devDependencies": {
+    "edge": "^7.10.1",
+    "webtask-bundle": "^3.0.1",
+    "webtask-tools": "^3.2.0"
+  }
+}
