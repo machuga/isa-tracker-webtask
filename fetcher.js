@@ -43,6 +43,20 @@ const xmlToJson = (xml) => {
   }).then(parse);
 };
 
+const parseOpportunity = (description) =>
+  description
+    .split('<br/>')
+    .map(part => part.trim())
+    .filter(Boolean)
+    .map(part => part.split(':'))
+    .map(([key, ...values]) => [key, values.join(':')])
+    .map(([key, value]) => [key.toLowerCase().replace(' ', '_').trim(), value.trim()])
+    .reduce((acc, [key, value]) => {
+      acc[key] = value;
+
+      return acc;
+    }, {});
+
 const parse = (json) => {
   const channel = Array.isArray(json.rss.channel) ? json.rss.channel[0] : json.rss.channel;
   const items = Array.isArray(channel.item) ? channel.item : [channel.item];
@@ -51,11 +65,11 @@ const parse = (json) => {
     title: channel.title[0],
     url: channel.link[0],
     description: channel.description[0],
-    items: items.map((val) => ({
+    items: items.map((val) => (Object.assign({
       title: val.title[0],
       description: val.description[0],
       created: Date.parse(val.pubDate[0]),
-    }))
+    }, parseOpportunity(val.description[0]))))
   };
 };
 
