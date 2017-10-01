@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "serve:wt": "wt serve webtask.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "wt-bundle --output ./build/webtask.js ./webtask.js"
+    "build": "wt-bundle --output ./build/webtask.js ./webtask.js",
+    "publish": "wt create webtask.js --name iss-tracker --bundle"
   },
   "keywords": [
     "iss"
